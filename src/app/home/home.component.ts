@@ -6,5 +6,7 @@ import { AccountService } from '@app/_services';
 export class HomeComponent {
     account = this.accountService.accountValue;
 
-    constructor(private accountService: AccountService) { }
+    constructor(private accountService: AccountService) {
+      this.accountService.account.subscribe(x => this.account = x);
+    }
 }

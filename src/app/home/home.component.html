@@ -1,4 +1,16 @@
-﻿<div class="p-4">
+﻿<div class="container" *ngIf="!account">
+  <div class="row">
+      <div class="col-sm-8 offset-sm-2 mt-5">
+          <div class="card m-3">
+              <h3 class="card-header">Unauthorized</h3>
+              <div class="card-body">
+                <a routerLink="/account/login" routerLinkActive="active" class="btn btn-link">Click here to login</a>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>
+<div class="p-4" *ngIf="account">
     <div class="container">
         <h1>Hi {{account.firstName}}!</h1>
         <p>You're logged in with Angular 10 & JWT!!</p>
