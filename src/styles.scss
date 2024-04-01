@@ -2,10 +2,6 @@
 
 a { cursor: pointer; }
 
-.app-container {
-    min-height: 320px;
-}
-
 .admin-nav {
     padding-top: 0;
     padding-bottom: 0;
@@ -17,4 +13,8 @@ a { cursor: pointer; }
     width: 40px;
     text-align: center;
     box-sizing: content-box;
+}
+
+.form-group {
+  margin-bottom: 1rem;
 }

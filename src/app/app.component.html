@@ -1,20 +1,57 @@
-﻿<div class="app-container" [ngClass]="{ 'bg-light': account }">
-    <!-- main nav -->
-    <nav class="navbar navbar-expand navbar-dark bg-dark" *ngIf="account">
-        <div class="navbar-nav">
-            <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" class="nav-item nav-link">Home</a>
-            <a routerLink="/profile" routerLinkActive="active" class="nav-item nav-link">Profile</a>
-            <a *ngIf="account.role === Role.Admin" routerLink="/admin" routerLinkActive="active" class="nav-item nav-link">Admin</a>
-            <a (click)="logout()" class="nav-item nav-link">Logout</a>
-        </div>
-    </nav>
+<div class="vh-100" [ngClass]="{ 'bg-light': account }">
+  <nav class="navbar navbar-expand-sm navbar-dark bg-primary">
+    <div class="container-fluid">
+      <a class="navbar-brand"
+        href="/">
+        <h2>App</h2>
+      </a>
+      <button class="navbar-toggler"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent"
+        aria-expanded="false"
+        aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse"
+        id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <ng-container *ngIf="account">
+            <li class="nav-item">
+              <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" class="nav-link active" aria-current="page">Home</a>
+            </li>
+            <li class="nav-item">
+              <a routerLink="/profile" routerLinkActive="active" class="nav-link">Profile</a>
+            </li>
+            <li class="nav-item">
+              <a *ngIf="account.role === Role.Admin" routerLink="/admin" routerLinkActive="active" class="nav-link">Admin</a>
+            </li>
+          </ng-container>
+        </ul>
+        <ul class="navbar-nav d-flex">
+          <li class="nav-item" *ngIf="account">
+            <a (click)="logout()" class="nav-link active">Logout</a>
+          </li>
+          <li class="nav-item" *ngIf="!account">
+            <a class="nav-link active"
+              aria-current="page"
+              (click)="login()">Login</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
 
-    <!-- subnav router outlet -->
-    <router-outlet name="subnav"></router-outlet>
+  <!-- subnav router outlet -->
+  <router-outlet name="subnav"></router-outlet>
 
-    <!-- global alert -->
-    <alert></alert>
+  <!-- global alert -->
+  <app-alert></app-alert>
 
-    <!-- main router outlet -->
-    <router-outlet></router-outlet>
+  <!-- global toast -->
+  <app-toast></app-toast>
+
+  <!-- main router outlet -->
+  <router-outlet></router-outlet>
 </div>

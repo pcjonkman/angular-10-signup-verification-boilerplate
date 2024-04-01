@@ -1,6 +1,7 @@
 ﻿<h1>My Profile</h1>
-<p>
-    <strong>Name: </strong> {{account.title}} {{account.firstName}} {{account.lastName}}<br />
-    <strong>Email: </strong> {{account.email}}
-</p>
+<div>
+    <div class="header">Name:</div>{{account.title}} {{account.firstName}} {{account.lastName}}<br />
+    <div class="header">Email:</div>{{account.email}}
+</div>
+<br />
 <p><a routerLink="update">Update Profile</a></p>

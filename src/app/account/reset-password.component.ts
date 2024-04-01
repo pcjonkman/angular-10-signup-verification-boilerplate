@@ -5,6 +5,8 @@ import { first } from 'rxjs/operators';
 
 import { AccountService, AlertService } from '@app/_services';
 import { MustMatch } from '@app/_helpers';
+import { ResetPasswordModalComponent } from './_modals';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 enum TokenStatus {
     Validating,
@@ -22,6 +24,7 @@ export class ResetPasswordComponent implements OnInit {
     submitted = false;
 
     constructor(
+        private modalService: NgbModal,
         private formBuilder: FormBuilder,
         private route: ActivatedRoute,
         private router: Router,
@@ -30,6 +33,8 @@ export class ResetPasswordComponent implements OnInit {
     ) { }
 
     ngOnInit() {
+      this.modalService.open(ResetPasswordModalComponent);
+
         this.form = this.formBuilder.group({
             password: ['', [Validators.required, Validators.minLength(6)]],
             confirmPassword: ['', Validators.required],

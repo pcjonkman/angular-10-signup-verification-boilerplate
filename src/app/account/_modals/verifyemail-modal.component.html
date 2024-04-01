@@ -1,0 +1,13 @@
+<div class="modal-header">
+  <h4 class="modal-title">Verify Email</h4>
+  <button type="button" class="btn-close" (click)="onCancelClick()"></button>
+</div>
+<div class="modal-body">
+  <div *ngIf="emailStatus == EmailStatus.Verifying">
+      Verifying email...
+  </div>
+  <div *ngIf="emailStatus == EmailStatus.Failed" class="alert alert-danger">
+    <i class="bi-x-octagon me-2"></i>Email verification failed, you can also verify your account by using <a class="btn-link" (click)="onForgotPasswordClick()">forgot password</a>.
+  </div>
+  <!-- <div class="modal-footer"></div> -->
+</div>

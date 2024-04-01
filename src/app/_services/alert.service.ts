@@ -20,7 +20,7 @@ export class AlertService {
     }
 
     error(message: string, options?: any) {
-        this.alert(new Alert({ ...options, type: AlertType.Error, message }));
+        this.alert(new Alert({ ...options, type: AlertType.Danger, message }));
     }
 
     info(message: string, options?: any) {

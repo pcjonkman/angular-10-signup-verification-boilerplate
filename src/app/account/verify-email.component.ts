@@ -3,6 +3,8 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { first } from 'rxjs/operators';
 
 import { AccountService, AlertService } from '@app/_services';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { VerifyEmailModalComponent } from './_modals';
 
 enum EmailStatus {
     Verifying,
@@ -15,6 +17,7 @@ export class VerifyEmailComponent implements OnInit {
     emailStatus = EmailStatus.Verifying;
 
     constructor(
+        private modalService: NgbModal,
         private route: ActivatedRoute,
         private router: Router,
         private accountService: AccountService,
@@ -22,6 +25,8 @@ export class VerifyEmailComponent implements OnInit {
     ) { }
 
     ngOnInit() {
+        this.modalService.open(VerifyEmailModalComponent);
+
         const token = this.route.snapshot.queryParams['token'];
 
         // remove token from url to prevent http referer leakage

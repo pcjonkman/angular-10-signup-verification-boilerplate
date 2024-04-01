@@ -1,6 +1,13 @@
-﻿<div class="p-4">
-    <div class="container">
-        <h1>Hi {{account.firstName}}!</h1>
-        <p>You're logged in with Angular 10 & JWT!!</p>
-    </div>
+﻿<div class="p-4" *ngIf="!account">
+  <div class="container">
+      <h1>Authorization required</h1>
+      <p>You are unauthorized.</p>
+      <p>You need to login.</p>
+  </div>
+</div>
+<div class="p-4" *ngIf="account">
+  <div class="container">
+      <h1>Hi {{account.firstName}}!</h1>
+      <p>You're logged in with Angular & JWT!!</p>
+  </div>
 </div>
